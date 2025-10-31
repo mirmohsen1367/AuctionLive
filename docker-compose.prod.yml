@@ -40,6 +40,7 @@ services:
       - 80:80
     depends_on:
       - web
+    restart: always
 
 volumes:
   postgres_data:
