@@ -1,6 +1,6 @@
 from django.db import models
 from django.core.validators import MinValueValidator
-from django.contrib.auth import get_user_model
+
 
 class AuctionItem(models.Model):
     name = models.CharField(max_length=50)
@@ -18,7 +18,7 @@ class AuctionItem(models.Model):
     def winner(self):
         bid = self.bids.order_by("-amount").first()  
         if bid:
-            f"winner is {bid.id} with amount {bid.amount}"
+            return f"winner is bid {bid.id} with amount {bid.amount}"
         return None
             
 
