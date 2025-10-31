@@ -1,10 +1,6 @@
-# 🏷️ AuctionLive
+# AuctionLive
 
-A live auction platform built with Django and Django Channels.
-
----
-
-## 🚀 Clone the Repository
+## 🧩 Clone the Repository
 
 ```bash
 git clone https://github.com/mirmohsen1367/AuctionLive.git
@@ -13,21 +9,27 @@ cd AuctionLive
 
 ---
 
-## ⚙️ Create Environment File
+## 🐍 Python Version
 
-Copy the example environment file and edit it as needed:
-
-```bash
-cp .env.example .env.dev
-```
-
-Then open `.env.dev` in a text editor and update the values (e.g., `SECRET_KEY`, `DATABASE`, etc.).
-
-> 💡 Use `.env.dev` for local development and `.env.prod` for production.
+This project uses **Python 3.12**.
+Make sure it’s installed before proceeding.
 
 ---
 
-## 🐍 Create and Activate Virtual Environment
+## ⚙️ Environment Setup
+
+Copy the example environment file to create your local configuration:
+
+```bash
+cp .env.example .env
+cp .env.example .env.dev
+```
+
+Then edit the values inside `.env` and `.env.dev` according to your environment.
+
+---
+
+## 🌱 Create and Activate Virtual Environment
 
 ### 🐧 Linux / macOS
 
@@ -53,7 +55,7 @@ pip install -r requirements.txt
 
 ---
 
-## ⚙️ Apply Migrations
+## 🧱 Apply Migrations
 
 ```bash
 python manage.py migrate
@@ -61,45 +63,47 @@ python manage.py migrate
 
 ---
 
-## ▶️ Run the Development Server
+## 🚀 Run the Development Server
 
 ```bash
 python manage.py runserver
 ```
 
 Access the app at:
-👉 **[http://127.0.0.1:8000/](http://127.0.0.1:8000/)**
+**[http://127.0.0.1:8000/](http://127.0.0.1:8000/)**
 
 ---
 
-## 🐳 Run with Docker Compose (Local)
+## 🐳 Run with Docker Compose (Development)
 
 ```bash
 docker compose up
 ```
 
-This will build and start the containers.
-Once running:
-
-* Web app → **[http://127.0.0.1:8000/](http://127.0.0.1:8000/)**
-* Create a superuser →
-
-  ```bash
-  docker compose exec web python manage.py createsuperuser
-  ```
+* Web app: [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
 
 ---
 
-## 🐳 Run with Docker Compose (Production)
+## 🏗️ Run with Docker Compose (Production)
 
 ```bash
 docker compose -f docker-compose.prod.yml up --build
+docker compose exec web python manage.py collectstatic
 ```
 
-Then:
+---
+
+## 👤 Create Superuser (Stage)
+
+After the containers are running or migrations are applied, create an admin user:
 
 ```bash
-docker compose exec web python manage.py collectstatic
+python manage.py createsuperuser
+```
+
+or (for Docker):
+
+```bash
 docker compose exec web python manage.py createsuperuser
 ```
 
@@ -107,15 +111,12 @@ docker compose exec web python manage.py createsuperuser
 
 ## 🧪 Test API Routes
 
-Visit the API documentation at:
-👉 **[http://example.com/api/swagger](http://example.com/api/swagger)**
+You can view the API documentation at:
+
+```
+http://127.0.0.1:8000/api/swagger/
+```
 
 ---
 
-## 📝 Notes
-
-* Make sure Docker and Docker Compose are installed.
-* Configure your `.env` files before running Docker or Django commands.
-* Default database: PostgreSQL (configured via Docker).
-
----
+✅ **You’re all set!** Your AuctionLive Django app should now be running locally or via Docker.
