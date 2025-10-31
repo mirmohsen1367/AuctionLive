@@ -28,7 +28,9 @@ ENV HOME=/home/app
 ENV APP_HOME=/home/app/web
 
 # Create user and directories
-RUN mkdir -p $APP_HOME && addgroup --system app && adduser --system --ingroup app app
+RUN mkdir -p $APP_HOME  
+RUN addgroup --system app && adduser --system --ingroup app app
+RUN mkdir $APP_HOME/static
 WORKDIR $APP_HOME
 
 # Install runtime dependencies
