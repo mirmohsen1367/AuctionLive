@@ -1,0 +1,45 @@
+services:
+  web:
+    build:
+      dockerfile: Dockerfile.prod
+    command: sh -c "python manage.py migrate && daphne -b 0.0.0.0 -p 8000 AuctionLive.asgi:application"
+    expose:
+      - 8000
+    env_file:
+      - .env.dev
+    depends_on:
+      - db
+      - redis
+    restart: always
+
+  db:
+    image: postgres:15
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    
+    environment:
+      POSTGRES_PASSWORD: mysecretpassword
+      POSTGRES_USER: myuser         # optional, defaults to 'postgres'
+      POSTGRES_DB: mydatabase
+
+    restart: always
+
+  redis:
+    image: redis:7
+    volumes:
+      - redis_data:/data
+    restart: always
+
+  nginx:
+    build: ./nginx
+    volumes:
+      - static_volume:/home/app/web/staticfiles
+    ports:
+      - 80:80
+    depends_on:
+      - web
+
+volumes:
+  postgres_data:
+  redis_data:
+  static_volume:
