@@ -87,7 +87,7 @@ docker compose up
 ## 🏗️ Run with Docker Compose (Production)
 
 ```bash
-docker compose -f docker-compose.prod.yml up --build
+docker compose -f docker-compose.prod.yml up 
 docker compose exec web python manage.py collectstatic
 ```
 
