@@ -9,14 +9,14 @@ services:
     depends_on:
       - db
       - redis
-    
+
     restart: always
 
   db:
     image: postgres:15
     volumes:
       - postgres_data:/var/lib/postgresql/data/
-    
+
     environment:
       POSTGRES_PASSWORD: mysecretpassword
       POSTGRES_USER: myuser         # optional, defaults to 'postgres'

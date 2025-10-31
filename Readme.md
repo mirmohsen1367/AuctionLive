@@ -49,9 +49,9 @@ You can now access the application at:
     docker compose up
     Build and start the containers
     Web app: http://127.0.0.1:8000/
-    docker compose exec web python manage.py createsuperuser 
+    docker compose exec web python manage.py createsuperuser
 
 ### 🐳 Run with Docker Compose for product
     docker compose -f docker-compose.prod.yml up --build
     docker compose exec web python manage.py collectstatic
-    docker compose exec web python manage.py createsuperuser     
+    docker compose exec web python manage.py createsuperuser

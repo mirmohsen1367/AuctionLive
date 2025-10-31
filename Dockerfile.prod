@@ -28,7 +28,7 @@ ENV HOME=/home/app
 ENV APP_HOME=/home/app/web
 
 # Create user and directories
-RUN mkdir -p $APP_HOME  
+RUN mkdir -p $APP_HOME
 RUN addgroup --system app && adduser --system --ingroup app app
 RUN mkdir $APP_HOME/static
 WORKDIR $APP_HOME
@@ -44,12 +44,12 @@ RUN pip install --upgrade pip && pip install --no-cache-dir /wheels/*
 # Copy wait_for_it.sh
 COPY wait_for_it.sh $APP_HOME/wait_for_it.sh
 
-# Copy full project 
+# Copy full project
 COPY . $APP_HOME
 
 # Set ownership
 RUN chown -R app:app $APP_HOME
-RUN sed -i 's/\r$//g' $APP_HOME/wait_for_it.sh 
+RUN sed -i 's/\r$//g' $APP_HOME/wait_for_it.sh
 RUN chmod +x $APP_HOME/wait_for_it.sh
 
 # Use non-root user
