@@ -31,7 +31,7 @@ DEBUG = os.getenv("DEBUG", default=True)
 
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", default=[])
 if ALLOWED_HOSTS:
-    ALLOWED_HOSTS = ALLOWED_HOSTS.split(" ")
+    ALLOWED_HOSTS = ALLOWED_HOSTS.split(",")
 
 # Application definition
 
